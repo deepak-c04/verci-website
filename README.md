@@ -1,6 +1,6 @@
 # Verci website preview
 
-This is a self-contained, dependency-free static site. The public build is deployed by the GitHub Pages workflow in `.github/workflows/pages.yml`; app ZIPs are attached to the `v2.0-preview` prerelease and are not stored in the Pages repository.
+This is a self-contained, dependency-free static site. The public build is deployed by the GitHub Pages workflow in `.github/workflows/pages.yml`; app ZIPs are attached to the `preview-2026-11-18` prerelease and are not stored in the Pages repository.
 
 ## Preview locally
 
@@ -26,7 +26,7 @@ verci-website/       # public repository; contains only this website and its Pag
   robots.txt
   sitemap.xml
   .github/workflows/pages.yml
-Verci 2.0 preview   # GitHub prerelease assets: five app ZIPs and SHA256SUMS.txt
+Verci early preview # GitHub prerelease assets: five app ZIPs and SHA256SUMS.txt
 ```
 
 The large ZIPs stay in GitHub Releases so the Pages artifact remains small. The repository contains no desktop app source, user attachments, or unpacked build directories. The app packages are early previews: the Mac app is not notarized and the Windows packages are unsigned.

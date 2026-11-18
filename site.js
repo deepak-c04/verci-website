@@ -1,7 +1,7 @@
 const platformContent = {
   mac: {
     label: "MACOS 14 OR LATER",
-    title: "Your Mac, in full color.",
+    title: "Your Mac, your mood.",
     description: "A universal build for Apple silicon and Intel. Read Spotify or Apple Music playback, choose a visual style, and make the lyric view yours.",
     details: [
       "10 visualizer styles and deep display controls",
@@ -15,7 +15,7 @@ const platformContent = {
   },
   windows: {
     label: "WINDOWS 11 24H2+ RECOMMENDED",
-    title: "A focused view for Windows.",
+    title: "Windows, in the flow.",
     description: "Choose x64 for most Intel or AMD laptops, or ARM64 for ARM devices. Verci reads the active Windows media session from supported players.",
     details: [
       "Responsive full-screen lyric visualizer and media controls",
@@ -98,7 +98,7 @@ navigation.addEventListener("click", event => {
 
 const isLocalPreview = location.protocol === "file:" || location.pathname.split("/").includes("website");
 if (!isLocalPreview) {
-  const releaseBase = "https://github.com/deepak-c04/verci-website/releases/download/v2.0-preview/";
+  const releaseBase = "https://github.com/deepak-c04/verci-website/releases/download/preview-2026-11-18/";
   document.querySelectorAll('a[href^="../dist/"]').forEach(link => {
     const filename = link.getAttribute("href").split("/").pop();
     link.href = releaseBase + encodeURIComponent(filename);
