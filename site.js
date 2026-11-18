@@ -16,7 +16,7 @@ const platformContent = {
   windows: {
     label: "WINDOWS 11 24H2+ RECOMMENDED",
     title: "Windows, in the flow.",
-    description: "Choose x64 for most Intel or AMD laptops, or ARM64 for ARM devices. Verci reads the active Windows media session from supported players.",
+    description: "Choose x64 for most Intel or AMD laptops, or ARM64 for ARM devices. VYBE reads the active Windows media session from supported players.",
     details: [
       "Responsive full-screen lyric visualizer and media controls",
       "Reads players that publish a Windows media session",
@@ -63,7 +63,7 @@ function selectPlatform(name, moveFocus = false) {
   const noteAccent = document.createElement("em");
   note.replaceChildren(document.createTextNode(name === "mac" ? "a song" : "your music"), document.createElement("br"), noteAccent);
   noteAccent.textContent = name === "mac" ? "in focus" : "in view";
-  art.querySelector(".platform-art-bottom span:first-child").textContent = name === "mac" ? "VERCI / MAC" : "VERCI / WINDOWS";
+  art.querySelector(".platform-art-bottom span:first-child").textContent = name === "mac" ? "VYBE / MAC" : "VYBE / WINDOWS";
   art.querySelector(".platform-art-bottom span:last-child").textContent = name === "mac" ? "14+" : "11 / 10 LTSC";
 }
 
