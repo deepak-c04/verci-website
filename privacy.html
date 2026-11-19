@@ -14,7 +14,7 @@
 </head>
 <body class="privacy-page">
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Aurafy home"><span class="brand-mark" aria-hidden="true">v</span><span>aurafy<span class="brand-period">.</span></span></a>
+    <a class="brand" href="index.html" aria-label="Aurafy home"><span class="brand-mark" aria-hidden="true">a</span><span>aurafy<span class="brand-period">.</span></span></a>
     <a class="header-cta" href="index.html#downloads">Get the preview <span aria-hidden="true">↗</span></a>
   </header>
   <main class="privacy-content">
@@ -38,11 +38,14 @@
     <h2>Optional Lyric Sync Agent on Mac</h2>
     <p>If you enable On-Device Sync in Aurafy’s menu, the agent captures audio from the selected Spotify or Apple Music app while a song is playing and compares speech recognition results with the track’s original lyrics. The comparison uses the original lyrics even if you display a translation. It requires macOS Screen & System Audio Recording and Speech Recognition permissions, plus an Apple on-device speech model for that language. Aurafy explicitly requests on-device-only recognition. Audio is processed in memory and is not saved or uploaded by Aurafy. If local recognition or confident matches are unavailable, the app falls back to the lyric file’s timestamps. Recognition may be less accurate for singing, rap, or some languages; timing is not guaranteed for every track. This preview feature is currently Mac-only.</p>
 
+    <h2>Lock Screen display on Mac</h2>
+    <p>This is off by default. If you turn it on, Aurafy attempts to show lyrics over the Lock Screen using a macOS system interface that may change. This preview behavior is best effort; do not rely on it across every macOS version.</p>
+
     <h2>The optional AI helpers</h2>
     <p>Feature assistants respond only when you ask. Aurafy uses built-in guidance when an on-device model is unavailable. On eligible Macs, Apple’s Foundation Models service may answer locally when the operating system and Apple Intelligence state allow it. The Windows 11 24H2 preview can optionally download a local model; the initial download requires internet and may be large. Aurafy does not send assistant prompts to a Aurafy cloud service.</p>
 
     <h2>Third-party services</h2>
-    <p>LRCLIB receives track metadata for uncached lyric searches. Apple’s iTunes Search may receive a title and artist for artwork lookup on Mac. Optional Windows model setup may retrieve model files from Microsoft’s local AI runtime. These requests are initiated by the app for the described features; the services’ own handling is governed by their respective terms and privacy practices.</p>
+    <p>LRCLIB receives track metadata for uncached lyric searches. Apple’s iTunes Search may receive a title and artist for artwork lookup on Mac. Apple MapKit provides map snapshots for fixed public landmarks in the Maps visualizer; Aurafy does not request the user’s location for those snapshots. Optional Windows model setup may retrieve model files from Microsoft’s local AI runtime. These requests are initiated by the app for the described features; the services’ own handling is governed by their respective terms and privacy practices.</p>
 
     <h2>Preview status</h2>
     <p>These are early preview builds. The app may change, and this page should be updated when its data flows or service providers change. The Mac app is not notarized and Windows packages are unsigned. See each download’s README before opening it.</p>
