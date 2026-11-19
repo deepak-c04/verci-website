@@ -1,4 +1,4 @@
-# Verci website preview
+# Aurafy website preview
 
 This is a self-contained, dependency-free static site. The public build is deployed by the GitHub Pages workflow in `.github/workflows/pages.yml`; app ZIPs are attached to the `preview-2026-11-18` prerelease and are not stored in the Pages repository.
 
@@ -22,13 +22,13 @@ verci-website/       # public repository; contains only this website and its Pag
   styles.css
   site.js
   privacy.html
-  verci-mark.svg
+  aurafy-mark.svg
   robots.txt
   sitemap.xml
   .github/workflows/pages.yml
-Verci early preview # GitHub prerelease assets: five app ZIPs and SHA256SUMS.txt
+Aurafy early preview # GitHub prerelease assets: five app ZIPs and SHA256SUMS.txt
 ```
 
 The large ZIPs stay in GitHub Releases so the Pages artifact remains small. The repository contains no desktop app source, user attachments, or unpacked build directories. The app packages are early previews: the Mac app is not notarized and the Windows packages are unsigned.
 
-Before calling Verci a production release, replace the preview downloads with signed/notarized releases, verify installation on target Mac and Windows devices, and update the download links and support notes. The website itself makes no analytics, cookie, or third-party font requests. Browsers contact GitHub only when a visitor chooses a release download.
+Before calling Aurafy a production release, replace the preview downloads with signed/notarized releases, verify installation on target Mac and Windows devices, and update the download links and support notes. The website itself makes no analytics, cookie, or third-party font requests. Browsers contact GitHub only when a visitor chooses a release download.

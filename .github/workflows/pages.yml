@@ -1,4 +1,4 @@
-name: Publish Verci website
+name: Publish Aurafy website
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
       - name: Stage static files
         run: |
           mkdir -p _site
-          cp index.html styles.css site.js privacy.html verci-mark.svg robots.txt sitemap.xml .nojekyll _site/
+          cp index.html styles.css site.js privacy.html aurafy-mark.svg robots.txt sitemap.xml .nojekyll _site/
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:

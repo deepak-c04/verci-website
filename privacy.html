@@ -6,47 +6,47 @@
   <meta name="theme-color" content="#111616">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'none'">
-  <meta name="description" content="A plain-language explanation of how the VYBE preview website and desktop apps handle data.">
-  <title>Data & privacy — VYBE</title>
-  <link rel="icon" href="vybe-mark.svg" type="image/svg+xml">
+  <meta name="description" content="A plain-language explanation of how the Aurafy preview website and desktop apps handle data.">
+  <title>Data & privacy — Aurafy</title>
+  <link rel="icon" href="aurafy-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <link rel="canonical" href="https://deepak-c04.github.io/verci-website/privacy.html">
 </head>
 <body class="privacy-page">
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="VYBE home"><span class="brand-mark" aria-hidden="true">v</span><span>vybe<span class="brand-period">.</span></span></a>
+    <a class="brand" href="index.html" aria-label="Aurafy home"><span class="brand-mark" aria-hidden="true">v</span><span>aurafy<span class="brand-period">.</span></span></a>
     <a class="header-cta" href="index.html#downloads">Get the preview <span aria-hidden="true">↗</span></a>
   </header>
   <main class="privacy-content">
-    <p class="eyebrow"><span class="eyebrow-dot"></span> VYBE / Data & privacy</p>
+    <p class="eyebrow"><span class="eyebrow-dot"></span> Aurafy / Data & privacy</p>
     <h1>No weird<br><em>stuff.</em></h1>
     <p class="updated">For the current early preview · Updated November 18, 2026</p>
-    <p class="intro">Here's the quick version: what VYBE reads, when it reaches out to other services, and what stays on your device. Third-party services have their own privacy practices, too.</p>
+    <p class="intro">Here's the quick version: what Aurafy reads, when it reaches out to other services, and what stays on your device. Third-party services have their own privacy practices, too.</p>
 
     <h2>The website</h2>
     <p>This static website does not set analytics cookies, run analytics scripts, use tracking pixels, or load third-party fonts. It has no account form or newsletter signup. The hosting provider may process ordinary request information such as IP address and request time in its server logs, according to that provider’s settings and policies.</p>
 
     <h2>When your song is playing</h2>
-    <p>VYBE reads the current track and playback state from your music player after you grant the operating-system permission. Track information is used to display what is playing and look for matching lyrics. When lyrics are not already cached, VYBE sends the track title, artist, album, and duration to LRCLIB for the lookup. Lyric coverage depends on that community-supplied catalogue. Cached lyrics remain on your device and can be shown offline.</p>
+    <p>Aurafy reads the current track and playback state from your music player after you grant the operating-system permission. Track information is used to display what is playing and look for matching lyrics. When lyrics are not already cached, Aurafy sends the track title, artist, album, and duration to LRCLIB for the lookup. Lyric coverage depends on that community-supplied catalogue. Cached lyrics remain on your device and can be shown offline.</p>
 
     <h2>Artwork, imports, and translations</h2>
-    <p>On Mac, when artwork is not available from the player, VYBE may look up artwork through Apple’s iTunes Search using the title and artist. Imported LRC or text lyrics and translations are processed and stored locally by the app. VYBE does not upload those files as part of its normal lyric display.</p>
+    <p>On Mac, when artwork is not available from the player, Aurafy may look up artwork through Apple’s iTunes Search using the title and artist. Imported LRC or text lyrics and translations are processed and stored locally by the app. Aurafy does not upload those files as part of its normal lyric display.</p>
 
     <h2>Optional video on Mac</h2>
-    <p>Spotify video mode captures the visible Spotify window to show an estimated crop. The app asks for macOS Screen & System Audio Recording permission. This video capture mode disables audio capture; captured frames are processed in memory and are not saved or uploaded by the app. Spotify layout changes may make the crop inaccurate. Apple Music video is available only if the player exposes a local video file to VYBE.</p>
+    <p>Spotify video mode captures the visible Spotify window to show an estimated crop. The app asks for macOS Screen & System Audio Recording permission. This video capture mode disables audio capture; captured frames are processed in memory and are not saved or uploaded by the app. Spotify layout changes may make the crop inaccurate. Apple Music video is available only if the player exposes a local video file to Aurafy.</p>
 
     <h2>Optional Lyric Sync Agent on Mac</h2>
-    <p>If you enable On-Device Sync in VYBE’s menu, the agent captures audio from the selected Spotify or Apple Music app while a song is playing and compares speech recognition results with the track’s original lyrics. The comparison uses the original lyrics even if you display a translation. It requires macOS Screen & System Audio Recording and Speech Recognition permissions, plus an Apple on-device speech model for that language. VYBE explicitly requests on-device-only recognition. Audio is processed in memory and is not saved or uploaded by VYBE. If local recognition or confident matches are unavailable, the app falls back to the lyric file’s timestamps. Recognition may be less accurate for singing, rap, or some languages; timing is not guaranteed for every track. This preview feature is currently Mac-only.</p>
+    <p>If you enable On-Device Sync in Aurafy’s menu, the agent captures audio from the selected Spotify or Apple Music app while a song is playing and compares speech recognition results with the track’s original lyrics. The comparison uses the original lyrics even if you display a translation. It requires macOS Screen & System Audio Recording and Speech Recognition permissions, plus an Apple on-device speech model for that language. Aurafy explicitly requests on-device-only recognition. Audio is processed in memory and is not saved or uploaded by Aurafy. If local recognition or confident matches are unavailable, the app falls back to the lyric file’s timestamps. Recognition may be less accurate for singing, rap, or some languages; timing is not guaranteed for every track. This preview feature is currently Mac-only.</p>
 
     <h2>The optional AI helpers</h2>
-    <p>Feature assistants respond only when you ask. VYBE uses built-in guidance when an on-device model is unavailable. On eligible Macs, Apple’s Foundation Models service may answer locally when the operating system and Apple Intelligence state allow it. The Windows 11 24H2 preview can optionally download a local model; the initial download requires internet and may be large. VYBE does not send assistant prompts to a VYBE cloud service.</p>
+    <p>Feature assistants respond only when you ask. Aurafy uses built-in guidance when an on-device model is unavailable. On eligible Macs, Apple’s Foundation Models service may answer locally when the operating system and Apple Intelligence state allow it. The Windows 11 24H2 preview can optionally download a local model; the initial download requires internet and may be large. Aurafy does not send assistant prompts to a Aurafy cloud service.</p>
 
     <h2>Third-party services</h2>
     <p>LRCLIB receives track metadata for uncached lyric searches. Apple’s iTunes Search may receive a title and artist for artwork lookup on Mac. Optional Windows model setup may retrieve model files from Microsoft’s local AI runtime. These requests are initiated by the app for the described features; the services’ own handling is governed by their respective terms and privacy practices.</p>
 
     <h2>Preview status</h2>
     <p>These are early preview builds. The app may change, and this page should be updated when its data flows or service providers change. The Mac app is not notarized and Windows packages are unsigned. See each download’s README before opening it.</p>
-    <div class="privacy-return"><a class="button button-lime" href="index.html">Back to VYBE <span aria-hidden="true">↗</span></a></div>
+    <div class="privacy-return"><a class="button button-lime" href="index.html">Back to Aurafy <span aria-hidden="true">↗</span></a></div>
   </main>
 </body>
 </html>
