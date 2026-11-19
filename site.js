@@ -6,6 +6,7 @@ const platformContent = {
     details: [
       "10 visualizer styles and deep display controls",
       "Original lyrics, transliteration, and imported translations",
+      "Optional Auto Sync with supported on-device speech languages",
       "Optional video backgrounds with the supported player source",
       "On-device assistant when Apple's model is available"
     ],
@@ -20,7 +21,8 @@ const platformContent = {
     details: [
       "Responsive full-screen lyric visualizer and media controls",
       "Reads players that publish a Windows media session",
-      "Import LRC or text lyrics when a lookup is missing",
+      "Manual Offset and Pace controls plus LRC or text imports",
+      "Live Auto Sync is not available yet",
       "Optional on-device AI on Windows 11 24H2+"
     ],
     footnote: "Preview builds are unsigned and may show a Windows SmartScreen notice. Windows launch and player-session checks on physical devices are still needed.",
@@ -48,7 +50,8 @@ function selectPlatform(name, moveFocus = false) {
   document.querySelector("#platform-name").textContent = data.title;
   document.querySelector("#platform-description").textContent = data.description;
   document.querySelector("#platform-footnote").textContent = data.footnote;
-  document.querySelector("#platform-download").textContent = `See ${name === "mac" ? "Mac" : "Windows"} downloads ↗`;
+  const downloadLabel = document.querySelector("#platform-download").firstChild;
+  downloadLabel.textContent = `See ${name === "mac" ? "Mac" : "Windows"} downloads `;
   document.querySelector("#platform-details").replaceChildren(
     ...data.details.map((detail, index) => {
       const item = document.createElement("li");

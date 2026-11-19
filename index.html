@@ -6,9 +6,9 @@
   <meta name="theme-color" content="#101313">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'none'">
-  <meta name="description" content="Lyrics that hit different. Aurafy turns music playing on your Mac or Windows laptop into a full-screen visualizer.">
+  <meta name="description" content="A full-screen lyric visualizer for Mac and Windows, with optional on-device Auto Sync on Mac.">
   <meta property="og:title" content="Aurafy — lyrics that hit different">
-  <meta property="og:description" content="Your music, your screen. A full-screen lyric visualizer for Mac and Windows.">
+  <meta property="og:description" content="Your music, your screen. Full-screen lyrics for Mac and Windows, with optional on-device Auto Sync on Mac.">
   <meta property="og:type" content="website">
   <title>Aurafy — lyrics that hit different</title>
   <link rel="icon" href="aurafy-mark.svg" type="image/svg+xml">
@@ -119,6 +119,27 @@
           <p>Keep music in your usual player. Aurafy reads its playback and offers the controls supported by your platform, so there’s no new music library to manage.</p>
           <span class="feature-platforms">MAC <b>·</b> WINDOWS</span>
         </article>
+        <article class="feature-card feature-card-sync" aria-labelledby="sync-feature-title">
+          <div class="feature-meta"><span>05 / AUTO SYNC</span><span class="feature-orb orb-blue" aria-hidden="true">↝</span></div>
+          <div class="sync-illustration" aria-hidden="true">
+            <div class="sync-illustration-top"><span>ILLUSTRATIVE SYNC FLOW</span><span class="sync-local">WHEN ENABLED</span></div>
+            <div class="sync-word-line"><span>stay</span><span>for</span><strong>the</strong><span>moment</span></div>
+            <div class="sync-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="sync-steps"><span>LISTEN</span><span>MATCH</span><span>ALIGN</span></div>
+          </div>
+          <div class="sync-feature-copy">
+            <h3 id="sync-feature-title">When timing drifts, find the moment again.</h3>
+            <div class="sync-platform-badges" role="group" aria-label="Auto Sync availability by platform">
+              <div><span>MAC</span><p>Optional live Auto Sync</p></div>
+              <div><span>WINDOWS</span><p>Manual Offset &amp; Pace · Live Auto Sync unavailable</p></div>
+            </div>
+            <p class="sync-feature-desc">On Mac, Auto Sync compares audio from your selected Spotify or Apple Music player with the original lyrics, then corrects timing after several confident matches.</p>
+            <div class="sync-facts">
+              <div><h4>Private by default</h4><p>Audio and recognized words are processed temporarily, never saved or uploaded. A small timing profile may be saved locally for the exact lyric version when the player provides a persistent track ID.</p></div>
+              <div><h4>What you need</h4><p>Screen &amp; System Audio Recording and Speech Recognition permissions, plus a supported on-device language.</p></div>
+            </div>
+          </div>
+        </article>
       </div>
       <div class="video-note"><span class="video-note-icon" aria-hidden="true">▷</span><p><strong>Bonus video mode on Mac.</strong> Spotify video uses an on-screen window crop and needs Screen Recording permission; Apple Music video is available only when a local video is exposed. Windows video is not available yet.</p><a href="#faq">The details <span aria-hidden="true">↗</span></a></div>
     </section>
@@ -129,7 +150,7 @@
         <div class="steps">
           <article class="step"><span class="step-number">01</span><div><h3>Queue your song</h3><p>Start Spotify or Apple Music on Mac. On Windows, use a player that publishes a Windows media session.</p></div><span class="step-arrow" aria-hidden="true">↘</span></article>
           <article class="step"><span class="step-number">02</span><div><h3>Pick your build</h3><p>Match your operating system and processor. Then allow the player permissions your device requests.</p></div><span class="step-arrow" aria-hidden="true">↘</span></article>
-          <article class="step"><span class="step-number">03</span><div><h3>Set your scene</h3><p>Choose a look, import lyrics when needed, and adjust timing if the words drift from the track.</p></div><span class="step-arrow" aria-hidden="true">✳</span></article>
+          <article class="step"><span class="step-number">03</span><div><h3>Set your scene</h3><p>Choose a look and import lyrics if needed. If timing drifts, enable Auto Sync on Mac or adjust Offset and Pace on Windows.</p></div><span class="step-arrow" aria-hidden="true">✳</span></article>
         </div>
       </div>
     </section>
@@ -151,8 +172,9 @@
           <ul class="platform-details" id="platform-details">
             <li><span>01</span> 10 visualizer styles and deep display controls</li>
             <li><span>02</span> Original lyrics, transliteration, and imported translations</li>
-            <li><span>03</span> Optional video backgrounds with the supported player source</li>
-            <li><span>04</span> On-device assistant when Apple’s model is available</li>
+            <li><span>03</span> Optional Auto Sync with supported on-device speech languages</li>
+            <li><span>04</span> Optional video backgrounds with the supported player source</li>
+            <li><span>05</span> On-device assistant when Apple’s model is available</li>
           </ul>
           <a class="text-link text-link-dark" id="platform-download" href="#downloads">See Mac downloads <span aria-hidden="true">↗</span></a>
         </div>
@@ -198,7 +220,7 @@
 
     <section class="privacy-section section-wrap" aria-labelledby="privacy-title">
       <div class="privacy-stamp" aria-hidden="true"><span>NO WEIRD STUFF</span><b>GOOD<br>VIBES</b><i>✳</i></div>
-      <div class="privacy-copy"><p class="eyebrow eyebrow-dark"><span class="eyebrow-dot"></span> Your data, no mystery</p><h2 id="privacy-title">Good vibes.<br><em>Clear lines.</em></h2><p>Aurafy doesn't need an account or cloud AI to show lyrics. For an uncached lyric lookup, it sends the track title, artist, album, and duration to LRCLIB. On Mac, artwork lookup may use Apple's iTunes Search. Cached lyrics stay on your device.</p><p>Feature assistants run only when you ask. Mac’s optional Lyric Sync Agent processes the selected player’s audio with on-device speech recognition only while enabled; it does not save or upload audio. Both macOS recording and speech permissions are required. Aurafy does not send assistant prompts to a cloud service.</p><a class="text-link text-link-dark" href="privacy.html">See exactly what leaves your device <span aria-hidden="true">↗</span></a></div>
+      <div class="privacy-copy"><p class="eyebrow eyebrow-dark"><span class="eyebrow-dot"></span> Your data, no mystery</p><h2 id="privacy-title">Good vibes.<br><em>Clear lines.</em></h2><p>Aurafy doesn't need an account or cloud AI to show lyrics. For an uncached lyric lookup, it sends the track title, artist, album, and duration to LRCLIB. On Mac, artwork lookup may use Apple's iTunes Search. Cached lyrics stay on your device.</p><p>Feature assistants run only when you ask. Mac’s optional Auto Sync uses on-device speech recognition while enabled. Aurafy does not save or upload the captured audio or recognized words. A small timing profile may be saved locally for a track when the player provides a persistent ID. Recording and speech permissions are required. Aurafy does not send assistant prompts to a cloud service.</p><a class="text-link text-link-dark" href="privacy.html">See exactly what leaves your device <span aria-hidden="true">↗</span></a></div>
     </section>
 
     <section class="faq-section" id="faq" aria-labelledby="faq-title">
@@ -207,7 +229,7 @@
         <div class="faq-list">
           <details><summary>Does Aurafy work with Spotify and Apple Music?<span aria-hidden="true">+</span></summary><p>On Mac, Aurafy reads playback from Spotify and Apple Music after you allow macOS Automation access. On Windows, it reads the active Windows media session; the player must publish that session for track details and controls to appear.</p></details>
           <details><summary>Will every song have lyrics, in every language?<span aria-hidden="true">+</span></summary><p>No lyric catalogue can promise every track and language. Aurafy looks up community supplied lyrics from LRCLIB. If a result is missing, you can import an LRC or text file you have. Mac also supports on-device transliteration where available and imported translations.</p></details>
-          <details><summary>Do the lyrics always match the exact singing pace?<span aria-hidden="true">+</span></summary><p>Timing depends on the lyric data. Word-timed files can follow more closely; line-only or plain-text lyrics may use estimated word timing. On Mac, enable <strong>On-Device Sync</strong> in Aurafy’s menu to let the optional Lyric Sync Agent compare the playing song with the lyrics and adjust only after several confident matches. It needs Screen &amp; System Audio Recording and Speech Recognition permissions, and a supported on-device language model. Singing and rap recognition can still be unreliable, so Aurafy falls back to the supplied timestamps when it cannot confidently align. Windows currently uses lyric timestamps and timing controls without this live agent.</p></details>
+          <details><summary>Do the lyrics always match the exact singing pace?<span aria-hidden="true">+</span></summary><p>Timing depends on the lyric file. Word-timed lyrics can follow more closely; line-only or plain-text lyrics may use estimated timing. On Mac, turn on <strong>Auto Sync</strong> from the menu bar or Settings → Lyrics to compare locally recognized words with the original lyrics. Timing adjusts after several confident matches. It requires Screen &amp; System Audio Recording and Speech Recognition permissions plus a supported on-device language. Audio and recognized words are not saved or uploaded by Aurafy. An in-session fit remains usable while playback is within 30 seconds of its current alignment point; a playback jump resets that point. A valid saved fit for that track and lyric version can also be used. Otherwise, Aurafy uses the lyric timestamps. Singing and rap recognition can be less reliable. Windows currently offers manual Offset and Pace controls, without live Auto Sync.</p></details>
           <details><summary>Why is video an option on Mac but not Windows?<span aria-hidden="true">+</span></summary><p>Aurafy does not receive a direct Spotify video stream. On Mac, Spotify video is an estimated crop of the visible Spotify window and requires Screen & System Audio Recording permission; it captures no audio and doesn’t save or upload frames. Apple Music video works only when the player exposes a local video file. Windows video is not implemented yet.</p></details>
           <details><summary>What does “early preview” mean?<span aria-hidden="true">+</span></summary><p>These are early builds for trying and sharing feedback. The Mac app is ad-hoc signed and not notarized; Windows packages are unsigned and may show SmartScreen. Windows still needs launch and player-session checks on physical devices. Review each ZIP’s README before running it.</p></details>
           <details><summary>Does Aurafy need internet or run all the time?<span aria-hidden="true">+</span></summary><p>Playback visualization works with the supported player connection. New lyric or artwork lookups need an internet connection; cached lyrics can be shown offline. Feature assistants are on demand and stop when Aurafy closes or the computer powers off.</p></details>

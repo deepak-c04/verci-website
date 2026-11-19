@@ -1,6 +1,6 @@
 # Aurafy website preview
 
-This is a self-contained, dependency-free static site. The public build is deployed by the GitHub Pages workflow in `.github/workflows/pages.yml`; app ZIPs are attached to the `preview-2026-11-18` prerelease and are not stored in the Pages repository.
+This is a self-contained, dependency-free static site. The public build is deployed by the GitHub Pages workflow in `.github/workflows/pages.yml`; app ZIPs are attached to the `aurafy-preview-2026-11-19` GitHub release and are not stored in the Pages repository. The workflow validates page structure and checks each linked release asset before publishing.
 
 ## Preview locally
 
