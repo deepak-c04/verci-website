@@ -115,10 +115,51 @@ for filename, audit in audits.items():
                 fail(f"{filename}: missing fragment target {destination}")
 index = (ROOT / "index.html").read_text(encoding="utf-8")
 site_js = (ROOT / "site.js").read_text(encoding="utf-8")
-if "Optional live Auto Sync" not in index or "Manual Offset &amp; Pace" not in index:
+sync_card_match = re.search(r'<article class="feature-card feature-card-sync"[^>]*>(.*?)</article>', index, re.S)
+if not sync_card_match:
+    fail("index.html: Auto Sync feature card is missing")
+sync_card = sync_card_match.group(1)
+if "Optional live Auto Sync" not in sync_card or "Manual timing in download" not in sync_card:
     fail("index.html: platform-specific Auto Sync availability copy is missing")
-if "Live Auto Sync is not available yet" not in site_js:
+windows_badge = re.search(r'<div><span>WINDOWS</span><p>([^<]*)</p></div>', sync_card)
+if not windows_badge or "not included" not in windows_badge.group(1).lower():
+    fail("index.html: Windows Auto Sync badge must disclose that it is not included")
+if "Live Auto Sync is in development and not in the current download" not in site_js:
     fail("site.js: Windows Auto Sync availability copy is missing")
+if "Compatibility in preview" not in index or "Laptop check: passed" in index:
+    fail("index.html: compatibility headline overstates physical-device verification")
+if "On Mac · private by default" not in sync_card or "Mac: Screen &amp; System Audio Recording" not in sync_card:
+    fail("index.html: Mac-only Auto Sync privacy and permission copy is not labeled")
+if "Windows source prototype needs build 20348 or later" not in sync_card:
+    fail("index.html: Windows Auto Sync source build requirement is missing from the feature card")
+
+windows_download_cards = re.findall(
+    r'<article class="download-card download-card-win(?:10)?">(.*?)</article>', index, re.S)
+if len(windows_download_cards) != 2 or any(
+        "Auto Sync not included in this download" not in card for card in windows_download_cards):
+    fail("index.html: each Windows download card must disclose that Auto Sync is not included")
+
+privacy = (ROOT / "privacy.html").read_text(encoding="utf-8")
+windows_privacy_match = re.search(
+    r'<h2>Windows Auto Sync is in development</h2>\s*<p>(.*?)</p>', privacy, re.S)
+if not windows_privacy_match:
+    fail("privacy.html: Windows Auto Sync preview and audio-capture boundaries are missing")
+windows_privacy = windows_privacy_match.group(1)
+if "current Windows download does not include live Auto Sync" not in windows_privacy or \
+        "excludes the microphone and system-wide audio mix" not in windows_privacy or \
+        "Windows build 20348 or later" not in windows_privacy or "child processes" not in windows_privacy:
+    fail("privacy.html: Windows Auto Sync preview and audio-capture boundaries are missing")
+
+styles = (ROOT / "styles.css").read_text(encoding="utf-8")
+for selector, minimum in ((".download-foot", 12), (".download-copy", 12),
+                          (".download-links a", 12), (".download-links small", 12),
+                          (".download-disclaimer p", 12), (".download-disclaimer a", 12),
+                          (".privacy-copy > p:not(.eyebrow)", 13),
+                          (".privacy-content p, .privacy-content li", 13)):
+    rules = re.findall(re.escape(selector) + r"\s*\{([^}]*)\}", styles)
+    sizes = [float(match.group(1)) for rule in rules if (match := re.search(r"font-size:\s*([0-9.]+)px", rule))]
+    if not sizes or min(sizes) < minimum:
+        fail(f"styles.css: essential disclosure text for {selector} is below {minimum}px")
 
 release_match = re.search(r'const releaseBase = "([^"]+)";', site_js)
 if not release_match:
