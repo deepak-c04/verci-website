@@ -1,5 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="22" fill="#d9f281"/>
-  <path d="M16 47 28.4 17h7.2L48 47h-9l-2.3-6.2H26L23.7 47H16Zm12.8-13.2h5.1l-2.5-7.1-2.6 7.1Z" fill="#111616"/>
-  <circle cx="47" cy="47" r="3" fill="#82984f"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 100 100" role="img" aria-labelledby="title desc">
+<title id="title">Aurafy app icon</title>
+<desc id="desc">The Aurafy infinity mark in near-black with violet and lime endpoints on a warm white rounded square.</desc>
+<rect width="100" height="100" rx="22" fill="#F7F6F2"/>
+<path d="M16 50 C16 22 38 19 50 50 S84 78 84 50 C84 22 62 19 50 50 S16 78 16 50" fill="none" stroke="#19191F" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="16" cy="50" r="5.6" fill="#745BFF"/>
+<circle cx="84" cy="50" r="5.6" fill="#D4F34B"/>
 </svg>

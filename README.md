@@ -23,6 +23,8 @@ verci-website/       # public repository; contains only this website and its Pag
   site.js
   privacy.html
   aurafy-mark.svg
+  aurafy.ico
+  aurafy-apple-touch-icon.png
   robots.txt
   sitemap.xml
   .github/workflows/pages.yml
