@@ -101,7 +101,7 @@ navigation.addEventListener("click", event => {
 
 const isLocalPreview = location.protocol === "file:" || location.pathname.split("/").includes("website");
 if (!isLocalPreview) {
-  const releaseBase = "https://github.com/deepak-c04/verci-website/releases/download/aurafy-preview-2026-11-19/";
+  const releaseBase = "https://github.com/deepak-c04/verci-website/releases/download/aurafy-preview-2026-11-21-2.2.19-build-43/";
   document.querySelectorAll('a[href^="../dist/"]').forEach(link => {
     const filename = link.getAttribute("href").split("/").pop();
     link.href = releaseBase + encodeURIComponent(filename);
