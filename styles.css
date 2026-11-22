@@ -307,6 +307,12 @@ h1, h2, h3, p { margin-top: 0; }
 .download-legacy-content .download-zip-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .download-legacy-content .download-zip-link { min-height: 44px; display: flex; align-items: center; }
 
+@media (min-width: 761px) and (max-height: 760px) {
+  .downloads-section { padding-top: 56px; padding-bottom: 82px; }
+  .downloads-heading { margin-bottom: 24px; }
+  .downloads-heading h2 { font-size: clamp(52px, 6.4vw, 76px); }
+}
+
 @media (max-width: 760px) {
   .download-platform-picker { gap: 9px; }
   .download-platform-choice { min-height: 74px; padding: 12px 14px; }
