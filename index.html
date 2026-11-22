@@ -163,7 +163,7 @@
         <div class="how-heading"><p class="eyebrow"><span class="eyebrow-dot"></span> Three steps. No lore dump.</p><h2 id="how-title">Press play.<br><span>You're in.</span></h2><p>Aurafy sits alongside the player you already use. Here's the quick-start.</p></div>
         <div class="steps">
           <article class="step"><span class="step-number">01</span><div><h3>Queue your song</h3><p>Start Spotify or Apple Music on Mac. On Windows, use a player that publishes a Windows media session.</p></div><span class="step-arrow" aria-hidden="true">↘</span></article>
-          <article class="step"><span class="step-number">02</span><div><h3>Choose your computer</h3><p>Choose the Mac or Windows card, then follow its numbered steps.</p></div><span class="step-arrow" aria-hidden="true">↘</span></article>
+          <article class="step"><span class="step-number">02</span><div><h3>Choose your computer</h3><p>Tap Mac or Windows. The website shows the right download and steps.</p></div><span class="step-arrow" aria-hidden="true">↘</span></article>
           <article class="step"><span class="step-number">03</span><div><h3>Set your scene</h3><p>Choose a look and import lyrics if needed. If timing drifts, enable Auto Sync on Mac or adjust Offset and Pace on Windows.</p></div><span class="step-arrow" aria-hidden="true">✳</span></article>
         </div>
       </div>
@@ -205,47 +205,50 @@
     <section class="downloads-section" id="downloads" aria-labelledby="downloads-title">
       <div class="section-wrap downloads-inner">
         <div class="downloads-heading">
-          <div><p class="eyebrow"><span class="eyebrow-dot"></span> Download Aurafy</p><h2 id="downloads-title">Choose your<br><span>computer.</span></h2></div>
-          <p>Choose the card that matches your computer. Follow its numbered steps.</p>
+          <div><p class="eyebrow"><span class="eyebrow-dot"></span> Download Aurafy</p><h2 id="downloads-title">Pick your<br><span>computer.</span></h2></div>
+          <p>Tap Mac or Windows. We’ll show you one simple way to get Aurafy.</p>
         </div>
+        <div class="download-platform-picker" role="group" aria-label="Choose your computer">
+          <button class="download-platform-choice" type="button" data-download-platform="mac" aria-pressed="false"><span>Mac</span><small>MacBook or iMac</small></button>
+          <button class="download-platform-choice" type="button" data-download-platform="windows" aria-pressed="false"><span>Windows</span><small>PC laptop or desktop</small></button>
+        </div>
+        <p class="download-status" id="download-status" aria-live="polite">Choose Mac or Windows to see the right download.</p>
         <div class="download-grid download-grid-simple">
-          <article class="download-card download-card-mac">
-            <div class="download-card-top"><span class="os-icon os-apple" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M14.8 10.3c0-2.3 1.8-3.4 1.9-3.5a4.2 4.2 0 0 0-3.4-1.9c-1.4-.1-2.8.9-3.5.9-.8 0-1.9-.9-3.1-.8a4.5 4.5 0 0 0-3.8 2.3c-1.6 2.8-.4 6.8 1.2 9 .7 1 1.6 2.2 2.8 2.1 1.1 0 1.5-.7 2.8-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.2a9.4 9.4 0 0 0 1.2-2.5 3.9 3.9 0 0 1-1.7-3.4ZM12.5 3.3A4 4 0 0 0 13.4.4a4.1 4.1 0 0 0-2.7 1.4 3.8 3.8 0 0 0-.9 2.8 3.4 3.4 0 0 0 2.7-1.3Z"/></svg></span><span class="download-badge">ONE DOWNLOAD</span></div>
-            <p class="download-os">MACOS 14 OR LATER</p><h3>Aurafy on Mac</h3><p class="download-copy">One download works on Intel and Apple silicon Macs.</p>
-            <a class="button button-dark" href="../dist/Aurafy-macOS-universal.zip" download>Download for Mac <span aria-hidden="true">↓</span></a>
-            <p class="download-guide-title">After it downloads</p>
+          <article class="download-card download-card-mac" data-download-card="mac" aria-labelledby="download-mac-title">
+            <p class="download-os">MAC · macOS 14 OR LATER</p><h3 id="download-mac-title">Get Aurafy on your Mac</h3><p class="download-copy">One download works on every Mac: Intel and Apple silicon.</p>
+            <a class="button button-dark" href="../dist/Aurafy-macOS-universal.zip" download>Download Aurafy for Mac <span aria-hidden="true">↓</span></a>
+            <p class="download-guide-title">Then follow these 3 steps</p>
             <ol class="download-steps">
-              <li>Open your Downloads folder.</li>
-              <li>Double-click the Aurafy ZIP file.</li>
-              <li>Drag Aurafy into Applications, then open it.</li>
+              <li>Wait for the download to finish.</li>
+              <li>Open Downloads. Double-click the Aurafy ZIP file.</li>
+              <li>Open the new folder. Double-click Aurafy.</li>
             </ol>
             <details class="download-help">
-              <summary>Mac says it cannot check the developer?</summary>
-              <div class="download-help-content"><p>This preview is not notarized. Only for the message “Apple cannot check it for malicious software”: open Apple menu → System Settings → Privacy &amp; Security → Open Anyway, then confirm Open.</p><p>If Mac says the app contains malware, will damage your computer, or is damaged, stop and do not open it.</p><a href="../dist/Aurafy-SHA256SUMS.txt" download>Optional: download the SHA-256 check list</a></div>
+              <summary>Mac shows a safety message?</summary>
+              <div class="download-help-content"><p>This early preview is not notarized. After trying to open Aurafy once, if Mac says only it cannot check the developer, ask a grown-up to open System Settings → Privacy &amp; Security → Open Anyway.</p><p><strong>If Mac says Aurafy contains malware, may damage your computer, or is damaged, stop. Do not open it.</strong></p><a href="../dist/Aurafy-SHA256SUMS.txt" download>Optional: download the SHA-256 check list</a></div>
             </details>
           </article>
-          <article class="download-card download-card-win">
-            <div class="download-card-top"><span class="os-icon os-windows" aria-hidden="true">⊞</span><span class="download-badge">EASIEST</span></div>
-            <p class="download-os">WINDOWS 11 · VERSION 24H2 OR LATER</p><h3>Aurafy on Windows</h3><p class="download-copy">Use Microsoft Store to install the app. No ZIP to unzip or extra choices.</p>
-            <a class="button button-dark" href="https://apps.microsoft.com/detail/9N6THTDVM3JX" target="_blank" rel="noopener noreferrer">Install from Microsoft Store <span aria-hidden="true">↗</span></a>
-            <p class="download-guide-title">Then do these 3 things</p>
+          <article class="download-card download-card-win" data-download-card="windows" aria-labelledby="download-windows-title">
+            <p class="download-os">WINDOWS 11 · VERSION 24H2 OR LATER</p><h3 id="download-windows-title">Get Aurafy from Microsoft Store</h3><p class="download-copy">This is the easiest way. The Store installs Aurafy for you.</p>
+            <a class="button button-dark" href="https://apps.microsoft.com/detail/9N6THTDVM3JX" target="_blank" rel="noopener noreferrer">Open Aurafy in Microsoft Store <span aria-hidden="true">↗</span></a>
+            <p class="download-store-search">You can also search <strong>Aurafy</strong> in the Microsoft Store app.</p>
+            <p class="download-guide-title">In the Store</p>
             <ol class="download-steps">
-              <li>Choose Get or Install in Microsoft Store.</li>
-              <li>Wait for the install to finish.</li>
-              <li>Choose Open to start Aurafy.</li>
+              <li>Click Get or Install.</li>
+              <li>Wait until it finishes.</li>
+              <li>Click Open.</li>
             </ol>
-            <p class="download-foot">Auto Sync not included in this download.</p>
             <details class="download-help">
-              <summary>Want to download a ZIP from this website?</summary>
-              <div class="download-help-content"><p>Most Windows computers use Intel or AMD. If your laptop says it has an ARM processor (such as Snapdragon), use the ARM download.</p><div class="download-zip-actions"><a class="button button-dark" href="../dist/Aurafy-Windows-11-24H2-x64.zip" download>Most PCs · Intel or AMD <span aria-hidden="true">↓</span></a><a class="download-zip-link" href="../dist/Aurafy-Windows-11-24H2-arm64.zip" download>ARM laptop · Snapdragon <span aria-hidden="true">↓</span></a></div><ol class="download-steps"><li>Open Downloads, right-click the ZIP, and choose Extract All.</li><li>Open the new Aurafy folder and double-click Aurafy.exe.</li></ol><p>These preview ZIPs are unsigned. If Windows shows a security warning and you are not sure, stop and ask someone you trust. Do not ignore a virus or malware warning.</p></div>
+              <summary>Need the website download instead?</summary>
+              <div class="download-help-content"><p>For most Windows computers, choose the first button. If your computer says it has a Snapdragon or ARM processor, choose the second one.</p><div class="download-zip-actions"><a class="button button-dark" href="../dist/Aurafy-Windows-11-24H2-x64.zip" download>Most PCs · Intel or AMD <span aria-hidden="true">↓</span></a><a class="download-zip-link" href="../dist/Aurafy-Windows-11-24H2-arm64.zip" download>ARM or Snapdragon <span aria-hidden="true">↓</span></a></div><p>After the ZIP downloads: open Downloads, double-click the ZIP, then open the new folder and double-click <strong>Aurafy.exe</strong>.</p><p>These preview ZIPs are unsigned. If Windows shows a security warning, stop and ask a grown-up. Never ignore a virus warning.</p></div>
+            </details>
+            <details class="download-legacy">
+              <summary>Using Windows 10 Enterprise or LTSC?</summary>
+              <div class="download-legacy-content"><p>This special download is for Windows 10 Enterprise or LTSC. Windows 10 Home and Pro are not supported.</p><div class="download-zip-actions"><a class="button button-dark" href="../dist/Aurafy-Windows-x64.zip" download>Most PCs · Intel or AMD <span aria-hidden="true">↓</span></a><a class="download-zip-link" href="../dist/Aurafy-Windows-arm64.zip" download>ARM laptop · Snapdragon <span aria-hidden="true">↓</span></a></div><p>After it downloads: open Downloads, double-click the ZIP, then open the new folder and double-click <strong>Aurafy.exe</strong>.</p><p>Windows downloads are unsigned. If a security warning appears, stop and ask a grown-up. Never ignore a virus warning.</p></div>
             </details>
           </article>
         </div>
-        <details class="download-legacy">
-          <summary>Using Windows 10 Enterprise or LTSC?</summary>
-          <div class="download-legacy-content"><article class="download-card download-card-win10"><p class="download-os">WINDOWS 10 ENTERPRISE OR LTSC</p><h3>Aurafy on Windows 10</h3><p class="download-copy">Windows 10 Home and Pro are not supported.</p><div class="download-links"><a href="../dist/Aurafy-Windows-x64.zip" download><span>Most PCs <small>Intel or AMD</small></span><b aria-hidden="true">↓</b></a><a href="../dist/Aurafy-Windows-arm64.zip" download><span>ARM laptop</span><b aria-hidden="true">↓</b></a></div><p class="download-foot">Auto Sync not included in this download · Unsigned ZIP</p><ol class="download-steps"><li>Open Downloads, right-click the ZIP, and choose Extract All.</li><li>Open the new Aurafy folder and double-click Aurafy.exe.</li></ol><p class="download-foot">If Windows shows a security warning and you are unsure, stop and ask someone you trust. Never ignore a virus or malware warning.</p></article></div>
-        </details>
-        <div class="download-disclaimer"><span aria-hidden="true">ⓘ</span><p><strong>Compatibility in preview:</strong> The Mac app is not notarized. Windows ZIPs are unsigned. If you see a malware warning, stop and do not open the app.</p><a href="../dist/Aurafy-SHA256SUMS.txt" download>Optional SHA-256 check list <span aria-hidden="true">↗</span></a></div>
+        <div class="download-disclaimer"><span aria-hidden="true">ⓘ</span><p><strong>Need help?</strong> These are early preview downloads. Ask a grown-up before opening them. If your computer says Aurafy may contain malware or damage your computer, stop and do not open it.</p><a href="../dist/Aurafy-SHA256SUMS.txt" download>Optional SHA-256 check list <span aria-hidden="true">↗</span></a></div>
       </div>
     </section>
 

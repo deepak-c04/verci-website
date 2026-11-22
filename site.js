@@ -109,6 +109,41 @@ if (!isLocalPreview) {
   });
 }
 
+const downloadButtons = [...document.querySelectorAll("[data-download-platform]")];
+const downloadCards = [...document.querySelectorAll("[data-download-card]")];
+const downloadStatus = document.querySelector("#download-status");
+const browserPlatform = [navigator.userAgentData?.platform, navigator.platform, navigator.userAgent].filter(Boolean).join(" ");
+const browserIsMobile = /iphone|ipad|ipod|android/i.test(browserPlatform)
+  || (navigator.maxTouchPoints > 1 && /mac/i.test(navigator.platform));
+const detectedDownloadPlatform = !browserIsMobile && /mac/i.test(browserPlatform)
+  ? "mac"
+  : !browserIsMobile && /windows|win32|win64|win/i.test(browserPlatform)
+    ? "windows"
+    : null;
+
+function showDownload(platform) {
+  const label = platform === "mac" ? "Mac" : "Windows";
+  for (const button of downloadButtons) {
+    button.setAttribute("aria-pressed", String(button.dataset.downloadPlatform === platform));
+  }
+  for (const card of downloadCards) {
+    card.hidden = card.dataset.downloadCard !== platform;
+  }
+  downloadStatus.textContent = platform === detectedDownloadPlatform
+    ? `We guessed ${label}. If that’s right, use the download below. Tap the other button if needed.`
+    : `Showing the ${label} download.`;
+}
+
+downloadButtons.forEach(button => {
+  button.addEventListener("click", () => showDownload(button.dataset.downloadPlatform));
+});
+
+if (detectedDownloadPlatform) {
+  showDownload(detectedDownloadPlatform);
+} else if (browserIsMobile) {
+  downloadStatus.textContent = "You’re on a phone or tablet. Downloads are for Mac or Windows computers. Choose the computer you want to download to.";
+}
+
 document.querySelectorAll("a[href^='#']").forEach(link => {
   link.addEventListener("click", event => {
     const target = document.querySelector(link.getAttribute("href"));
