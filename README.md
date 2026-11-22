@@ -1,6 +1,6 @@
 # Aurafy website preview
 
-This is a self-contained, dependency-free static site. The public build is deployed by the GitHub Pages workflow in `.github/workflows/pages.yml`; app ZIPs are attached to the `aurafy-preview-2026-11-19` GitHub release and are not stored in the Pages repository. The workflow validates page structure and checks each linked release asset before publishing.
+This is a self-contained, dependency-free static site. The current public preview is version 2.2.19 build 43 (tag aurafy-preview-2026-11-21-2.2.19-build-43). The GitHub Pages workflow in .github/workflows/pages.yml validates the pages and release assets before deploying; app ZIPs stay attached to the GitHub release.
 
 ## Preview locally
 
@@ -10,7 +10,7 @@ From the project root, run:
 python3 -m http.server 8080
 ```
 
-Then open `http://localhost:8080/website/`. On this local path, download buttons point to the ZIPs in the workspace `dist/` directory. On the published Pages URL, the site links to the GitHub prerelease assets.
+Then open http://localhost:8080/ from this repository root. In the larger verci workspace, use http://localhost:8080/website/. On the published Pages URL, download buttons link to GitHub prerelease assets.
 
 ## Published layout
 
@@ -25,6 +25,7 @@ verci-website/       # public repository; contains only this website and its Pag
   aurafy-mark.svg
   aurafy.ico
   aurafy-apple-touch-icon.png
+  og-image.png
   robots.txt
   sitemap.xml
   .github/workflows/pages.yml

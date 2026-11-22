@@ -10,7 +10,7 @@ const platformContent = {
       "Optional video backgrounds with the supported player source",
       "On-device assistant when Apple's model is available"
     ],
-    footnote: "Preview build: ad-hoc signed and not notarized. macOS may show a first-open security prompt.",
+    footnote: "Mac build: ad-hoc signed and not notarized. macOS may show a first-open security prompt.",
     artClass: "platform-art-mac",
     panelLabel: "tab-mac",
   },
@@ -25,7 +25,7 @@ const platformContent = {
       "Live Auto Sync is in development and not in the current download",
       "Optional on-device AI on Windows 11 24H2+"
     ],
-    footnote: "Preview builds are unsigned and may show a Windows SmartScreen notice. Windows launch and player-session checks on physical devices are still needed.",
+    footnote: "Early access builds are unsigned and may show a Windows SmartScreen notice. Windows launch and player-session checks on physical devices are still needed.",
     artClass: "platform-art-windows",
     panelLabel: "tab-windows",
   }
@@ -114,7 +114,91 @@ document.querySelectorAll("a[href^='#']").forEach(link => {
     const target = document.querySelector(link.getAttribute("href"));
     if (!target) return;
     event.preventDefault();
+    const targetHeading = target.matches("h1, h2") ? target : target.querySelector("h1, h2");
+    if (targetHeading) {
+      targetHeading.tabIndex = -1;
+      targetHeading.focus({ preventScroll: true });
+    }
     target.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
     history.replaceState(null, "", link.getAttribute("href"));
   });
 });
+
+const demoVisualizer = document.querySelector(".visualizer-card");
+if (demoVisualizer) {
+  const moodButtons = [...demoVisualizer.querySelectorAll("[data-mood]")];
+  const moods = ["glow", "daydream", "after-hours"];
+  moodButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const mood = button.dataset.mood;
+      if (!moods.includes(mood)) return;
+      demoVisualizer.classList.remove(...moods.map(name => `mood-${name}`));
+      demoVisualizer.classList.add(`mood-${mood}`);
+      moodButtons.forEach(option => {
+        const selected = option === button;
+        option.classList.toggle("is-selected", selected);
+        option.setAttribute("aria-pressed", String(selected));
+      });
+    });
+  });
+
+  const lyricRegion = demoVisualizer.querySelector(".lyric-illustration");
+  const lyricNodes = {
+    before: lyricRegion.querySelector('[data-demo-lyric="before"]'),
+    focus: lyricRegion.querySelector('[data-demo-lyric="focus"]'),
+    after: lyricRegion.querySelector('[data-demo-lyric="after"]'),
+  };
+  const minutesNode = demoVisualizer.querySelector("[data-demo-minutes]");
+  const secondsNode = demoVisualizer.querySelector("[data-demo-seconds]");
+  const lyricFrames = [
+    { before: "let the", focus: "feeling", after: "find you" },
+    { before: "stay with", focus: "this moment", after: "a little longer" },
+    { before: "move like", focus: "moonlight", after: "through the dark" },
+    { before: "keep your", focus: "soft glow", after: "close to you" },
+  ];
+  const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let frameIndex = 0;
+  let visualizerSeconds = 222;
+  let lyricTimer = 0;
+  let clockTimer = 0;
+  let firstLyricTimer = 0;
+
+  function stopPreview() {
+    window.clearInterval(lyricTimer);
+    window.clearInterval(clockTimer);
+    window.clearTimeout(firstLyricTimer);
+    lyricTimer = 0;
+    clockTimer = 0;
+    firstLyricTimer = 0;
+  }
+
+  function advanceLyrics() {
+    lyricRegion.classList.add("is-changing");
+    window.setTimeout(() => {
+      frameIndex = (frameIndex + 1) % lyricFrames.length;
+      const nextFrame = lyricFrames[frameIndex];
+      for (const [key, node] of Object.entries(lyricNodes)) node.textContent = nextFrame[key];
+      lyricRegion.classList.remove("is-changing");
+    }, 240);
+  }
+
+  function startPreview() {
+    if (motionPreference.matches || document.hidden || lyricTimer) return;
+    firstLyricTimer = window.setTimeout(advanceLyrics, 900);
+    lyricTimer = window.setInterval(advanceLyrics, 2800);
+    clockTimer = window.setInterval(() => {
+      visualizerSeconds = (visualizerSeconds + 1) % 3600;
+      minutesNode.textContent = String(Math.floor(visualizerSeconds / 60)).padStart(2, "0");
+      secondsNode.textContent = String(visualizerSeconds % 60).padStart(2, "0");
+    }, 1000);
+  }
+
+  function syncPreviewState() {
+    stopPreview();
+    startPreview();
+  }
+
+  startPreview();
+  document.addEventListener("visibilitychange", syncPreviewState);
+  motionPreference.addEventListener("change", syncPreviewState);
+}

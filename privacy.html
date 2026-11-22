@@ -3,10 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111616">
+  <meta name="theme-color" content="#000000">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'none'">
-  <meta name="description" content="A plain-language explanation of how the Aurafy preview website and desktop apps handle data.">
+  <meta name="description" content="A plain-language explanation of how the Aurafy early access website and desktop apps handle data.">
+  <meta property="og:site_name" content="Aurafy">
+  <meta property="og:title" content="Data & privacy — Aurafy">
+  <meta property="og:description" content="A plain-language explanation of how the Aurafy early access website and desktop apps handle data.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://deepak-c04.github.io/verci-website/privacy.html">
+  <meta property="og:image" content="https://deepak-c04.github.io/verci-website/og-image.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Aurafy infinity mark beside the words Lyrics that hit different on a dark violet background.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Data & privacy — Aurafy">
+  <meta name="twitter:description" content="A plain-language explanation of how the Aurafy early access website and desktop apps handle data.">
+  <meta name="twitter:image" content="https://deepak-c04.github.io/verci-website/og-image.png">
+  <meta name="twitter:image:alt" content="Aurafy infinity mark beside the words Lyrics that hit different on a dark violet background.">
   <title>Data & privacy — Aurafy</title>
   <link rel="icon" href="aurafy-mark.svg" type="image/svg+xml">
   <link rel="icon" href="aurafy.ico" sizes="any" type="image/x-icon">
@@ -17,16 +32,16 @@
 <body class="privacy-page">
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Aurafy home"><img class="brand-mark" src="aurafy-mark.svg" alt="" aria-hidden="true"><span>aurafy<span class="brand-period">.</span></span></a>
-    <a class="header-cta" href="index.html#downloads">Get the preview <span aria-hidden="true">↗</span></a>
+    <a class="header-cta" href="index.html#downloads">Get early access <span aria-hidden="true">↗</span></a>
   </header>
   <main class="privacy-content">
     <p class="eyebrow"><span class="eyebrow-dot"></span> Aurafy / Data & privacy</p>
     <h1>No weird<br><em>stuff.</em></h1>
-    <p class="updated">For the current early preview · Updated November 20, 2026</p>
+    <p class="updated">For the current early access release · Updated November 20, 2026</p>
     <p class="intro">Here's the quick version: what Aurafy reads, when it reaches out to other services, and what stays on your device. Third-party services have their own privacy practices, too.</p>
 
     <h2>The website</h2>
-    <p>This static website does not set analytics cookies, run analytics scripts, use tracking pixels, or load third-party fonts. It has no account form or newsletter signup. The hosting provider may process ordinary request information such as IP address and request time in its server logs, according to that provider’s settings and policies.</p>
+    <p>This static website does not set analytics cookies, run analytics scripts, use tracking pixels, or load third-party fonts. It has no account form or newsletter signup. On the published site, clicking a download takes your browser to GitHub Releases; GitHub’s own privacy practices apply to that request. The hosting provider may process ordinary request information such as IP address and request time in its server logs, according to that provider’s settings and policies.</p>
 
     <h2>When your song is playing</h2>
     <p>Aurafy reads the current track and playback state from your music player after you grant the operating-system permission. Track information is used to display what is playing and look for matching lyrics. When lyrics are not already cached, Aurafy sends the track title, artist, album, and duration to LRCLIB for the lookup. Lyric coverage depends on that community-supplied catalogue. Cached lyrics remain on your device and can be shown offline.</p>
@@ -38,22 +53,22 @@
     <p>Spotify video mode captures the visible Spotify window to show an estimated crop. The app asks for macOS Screen & System Audio Recording permission. This video capture mode disables audio capture; captured frames are processed in memory and are not saved or uploaded by the app. Spotify layout changes may make the crop inaccurate. Apple Music video is available only if the player exposes a local video file to Aurafy.</p>
 
     <h2>Optional Auto Sync on Mac</h2>
-    <p>Turn on Auto Sync from Aurafy’s menu bar or in <strong>Settings → Lyrics</strong>. The app captures audio from the selected Spotify or Apple Music player while a song is playing and compares on-device speech recognition results with the track’s original lyrics, even when you display a translation. It requires macOS Screen &amp; System Audio Recording and Speech Recognition permissions, plus an Apple on-device speech model for that language. Aurafy requests on-device-only recognition. Audio and recognized words are processed in memory and are not saved or uploaded by Aurafy. After several confident matches, Aurafy may save a small timing profile locally, only when the player provides a persistent track ID and only for the exact lyric version. The profile stores a track key, a fingerprint derived from lyric words and timestamps, timing values, and the save time; it does not contain audio or recognition transcripts. You can remove it in <strong>Settings → Lyrics → Forget saved Auto Sync for this track</strong>. An in-session fit remains usable while playback is within 30 seconds of its current alignment point; a playback jump resets that point. A valid saved fit for that track and lyric version can also be used. Otherwise, Aurafy falls back to the lyric file’s timestamps. Recognition may be less accurate for singing, rap, or some languages; timing is not guaranteed for every track. This preview feature is currently Mac-only.</p>
+    <p>Turn on Auto Sync from Aurafy’s menu bar or in <strong>Settings → Lyrics</strong>. The app captures audio from the selected Spotify or Apple Music player while a song is playing and compares on-device speech recognition results with the track’s original lyrics, even when you display a translation. It requires macOS Screen &amp; System Audio Recording and Speech Recognition permissions, plus an Apple on-device speech model for that language. Aurafy requests on-device-only recognition. Audio and recognized words are processed in memory and are not saved or uploaded by Aurafy. After several confident matches, Aurafy may save a small timing profile locally, only when the player provides a persistent track ID and only for the exact lyric version. The profile stores a track key, a fingerprint derived from lyric words and timestamps, timing values, and the save time; it does not contain audio or recognition transcripts. You can remove it in <strong>Settings → Lyrics → Forget saved Auto Sync for this track</strong>. An in-session fit remains usable while playback is within 30 seconds of its current alignment point; a playback jump resets that point. A valid saved fit for that track and lyric version can also be used. Otherwise, Aurafy falls back to the lyric file’s timestamps. Recognition may be less accurate for singing, rap, or some languages; timing is not guaranteed for every track. This early access feature is currently Mac-only.</p>
 
     <h2>Windows Auto Sync is in development</h2>
     <p>The current Windows download does not include live Auto Sync; Windows uses lyric timestamps and manual Offset and Pace timing. The source prototype is optional and user-enabled. It requires Windows build 20348 or later, an identified player process, and a matching installed Windows speech language. It analyzes audio rendered by that player process and its child processes using the local speech recognizer. It excludes the microphone and system-wide audio mix, and does not save audio, recognized words, or the live timing fit. Only the Auto Sync preference and chosen speech language are saved locally. Browser players and players Aurafy cannot identify are not supported by this first implementation. Physical Windows playback, speech recognition, and recovery still need validation before this feature can be included in a download.</p>
 
     <h2>Lock Screen display on Mac</h2>
-    <p>This is off by default. If you turn it on, Aurafy attempts to show lyrics over the Lock Screen using a macOS system interface that may change. This preview behavior is best effort; do not rely on it across every macOS version.</p>
+    <p>This is off by default. If you turn it on, Aurafy attempts to show lyrics over the Lock Screen using a macOS system interface that may change. This early access behavior is best effort; do not rely on it across every macOS version.</p>
 
     <h2>The optional AI helpers</h2>
-    <p>Feature assistants respond only when you ask. Aurafy uses built-in guidance when an on-device model is unavailable. On eligible Macs, Apple’s Foundation Models service may answer locally when the operating system and Apple Intelligence state allow it. The Windows 11 24H2 preview can optionally download a local model; the initial download requires internet and may be large. Aurafy does not operate a cloud service that receives assistant prompts.</p>
+    <p>Feature assistants respond only when you ask. Aurafy uses built-in guidance when an on-device model is unavailable. On eligible Macs, Apple’s Foundation Models service may answer locally when the operating system and Apple Intelligence state allow it. The Windows 11 24H2 build can optionally download a local model; the initial download requires internet and may be large. Aurafy does not operate a cloud service that receives assistant prompts.</p>
 
     <h2>Third-party services</h2>
     <p>LRCLIB receives track metadata for uncached lyric searches. Apple’s iTunes Search may receive a title and artist for artwork lookup on Mac. Apple MapKit provides map snapshots for fixed public landmarks in the Maps visualizer; Aurafy does not request the user’s location for those snapshots. Optional Windows model setup may retrieve model files from Microsoft’s local AI runtime. These requests are initiated by the app for the described features; the services’ own handling is governed by their respective terms and privacy practices.</p>
 
-    <h2>Preview status</h2>
-    <p>These are early preview builds. The app may change, and this page should be updated when its data flows or service providers change. The Mac app is not notarized and Windows packages are unsigned. See each download’s README before opening it.</p>
+    <h2>Build status</h2>
+    <p>These are early access builds. The app may change, and this page should be updated when its data flows or service providers change. The Mac app is not notarized and Windows packages are unsigned. See each download’s README before opening it.</p>
     <div class="privacy-return"><a class="button button-lime" href="index.html">Back to Aurafy <span aria-hidden="true">↗</span></a></div>
   </main>
 </body>
