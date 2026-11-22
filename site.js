@@ -10,7 +10,7 @@ const platformContent = {
       "Optional video backgrounds with the supported player source",
       "On-device assistant when Apple's model is available"
     ],
-    footnote: "Mac build: ad-hoc signed and not notarized. macOS may show a first-open security prompt.",
+    footnote: "Mac build: ad-hoc signed and not notarized. See the Mac download card for developer-verification steps; stop if macOS reports malware or damage.",
     artClass: "platform-art-mac",
     panelLabel: "tab-mac",
   },
