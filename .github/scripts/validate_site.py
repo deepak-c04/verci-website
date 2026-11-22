@@ -7,7 +7,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 import re
 from urllib.error import HTTPError, URLError
-from urllib.parse import quote
+from urllib.parse import quote, urlsplit
 from urllib.request import Request, urlopen
 
 
@@ -93,7 +93,7 @@ def audit_page(path: Path) -> PageAudit:
             continue
         if destination.startswith("../dist/"):
             continue
-        local_path, _, fragment = destination.partition("#")
+        local_path = urlsplit(destination).path
         if local_path and not (path.parent / local_path).resolve().is_file():
             fail(f"{filename}: missing local destination {destination}")
     return audit
@@ -105,7 +105,8 @@ for filename, audit in audits.items():
     for destination in audit.local_links:
         if destination.startswith(("https://", "http://", "mailto:", "data:", "../dist/")):
             continue
-        local_path, _, fragment = destination.partition("#")
+        parsed = urlsplit(destination)
+        local_path, fragment = parsed.path, parsed.fragment
         if not fragment:
             continue
         target = (ROOT / local_path).resolve() if local_path else (ROOT / filename).resolve()
