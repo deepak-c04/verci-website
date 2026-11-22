@@ -133,11 +133,16 @@ if "On Mac · private by default" not in sync_card or "Mac: Screen &amp; System 
 if "Windows source prototype needs build 20348 or later" not in sync_card:
     fail("index.html: Windows Auto Sync source build requirement is missing from the feature card")
 
-windows_download_cards = re.findall(
-    r'<article class="download-card download-card-win(?:10)?">(.*?)</article>', index, re.S)
-if len(windows_download_cards) != 2 or any(
-        "Auto Sync not included in this download" not in card for card in windows_download_cards):
-    fail("index.html: each Windows download card must disclose that Auto Sync is not included")
+windows_download_match = re.search(
+    r'<article class="download-card download-card-win"[^>]*>(.*?)</article>', index, re.S)
+windows10_download_match = re.search(
+    r'<details class="download-legacy"[^>]*>(.*?)</details>', index, re.S)
+if not windows_download_match or \
+        "Auto Sync is not included in this Windows download." not in windows_download_match.group(1):
+    fail("index.html: Windows Store and ZIP path must disclose that Auto Sync is not included")
+if not windows10_download_match or \
+        "Auto Sync is not included in this Windows 10 download." not in windows10_download_match.group(1):
+    fail("index.html: Windows 10 Enterprise or LTSC path must disclose that Auto Sync is not included")
 
 privacy = (ROOT / "privacy.html").read_text(encoding="utf-8")
 windows_privacy_match = re.search(
