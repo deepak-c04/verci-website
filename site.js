@@ -22,7 +22,7 @@ const platformContent = {
       "Responsive full-screen lyric visualizer and media controls",
       "Reads players that publish a Windows media session",
       "Manual Offset and Pace controls plus LRC or text imports",
-      "Live Auto Sync is in development and not in the current download",
+      "Opt-in Live Auto Sync preview on build 20348+",
       "Optional on-device AI on Windows 11 24H2+"
     ],
     footnote: "Early access builds are unsigned and may show a Windows SmartScreen notice. Windows launch and player-session checks on physical devices are still needed.",
