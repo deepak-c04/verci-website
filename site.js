@@ -4,7 +4,7 @@ const platformContent = {
     title: "Your Mac, your mood.",
     description: "A universal build for Apple silicon and Intel. Read Spotify or Apple Music playback, choose a visual style, and make the lyric view yours.",
     details: [
-      "10 visualizer styles and deep display controls",
+      "13 visualizer styles and deep display controls",
       "Original lyrics, transliteration, and imported translations",
       "Optional Auto Sync with supported on-device speech languages",
       "Optional video backgrounds with the supported player source",
@@ -15,14 +15,14 @@ const platformContent = {
     panelLabel: "tab-mac",
   },
   windows: {
-    label: "WINDOWS 11 24H2+ RECOMMENDED",
+    label: "WINDOWS 10 OR 11 · BEST ON 11 24H2",
     title: "Windows, in the flow.",
     description: "Choose x64 for most Intel or AMD laptops, or ARM64 for ARM devices. Aurafy reads the active Windows media session from supported players.",
     details: [
       "Responsive full-screen lyric visualizer and media controls",
       "Reads players that publish a Windows media session",
       "Manual Offset and Pace controls plus LRC or text imports",
-      "Live Auto Sync is in development and not in the current download",
+      "Opt-in Live Auto Sync preview on build 20348+",
       "Optional on-device AI on Windows 11 24H2+"
     ],
     footnote: "Early access builds are unsigned and may show a Windows SmartScreen notice. Windows launch and player-session checks on physical devices are still needed.",
@@ -67,7 +67,7 @@ function selectPlatform(name, moveFocus = false) {
   note.replaceChildren(document.createTextNode(name === "mac" ? "a song" : "your music"), document.createElement("br"), noteAccent);
   noteAccent.textContent = name === "mac" ? "in focus" : "in view";
   art.querySelector(".platform-art-bottom span:first-child").textContent = name === "mac" ? "Aurafy / MAC" : "Aurafy / WINDOWS";
-  art.querySelector(".platform-art-bottom span:last-child").textContent = name === "mac" ? "14+" : "11 / 10 LTSC";
+  art.querySelector(".platform-art-bottom span:last-child").textContent = name === "mac" ? "14+" : "11 / 10";
 }
 
 tabs.forEach((tab, index) => {
@@ -99,13 +99,16 @@ navigation.addEventListener("click", event => {
   navigation.classList.remove("is-open");
 });
 
+// index.html links straight to the GitHub release so downloads work without JavaScript.
+// Local previews inside the verci workspace point the same links at the ZIPs built in ../dist/.
+const releaseBase = "https://github.com/deepak-c04/verci-website/releases/download/aurafy-preview-2026-11-21-2.2.19-build-43/";
 const isLocalPreview = location.protocol === "file:" || location.pathname.split("/").includes("website");
-if (!isLocalPreview) {
-  const releaseBase = "https://github.com/deepak-c04/verci-website/releases/download/aurafy-preview-2026-11-21-2.2.19-build-43/";
-  document.querySelectorAll('a[href^="../dist/"]').forEach(link => {
-    const filename = link.getAttribute("href").split("/").pop();
-    link.href = releaseBase + encodeURIComponent(filename);
-    link.removeAttribute("download");
+if (isLocalPreview) {
+  document.querySelectorAll("a[href]").forEach(link => {
+    const href = link.getAttribute("href");
+    if (!href.startsWith(releaseBase)) return;
+    link.href = `../dist/${href.slice(releaseBase.length)}`;
+    link.setAttribute("download", "");
   });
 }
 

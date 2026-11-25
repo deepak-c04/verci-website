@@ -7,7 +7,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 import re
 from urllib.error import HTTPError, URLError
-from urllib.parse import quote, urlsplit
+from urllib.parse import quote, unquote, urlsplit
 from urllib.request import Request, urlopen
 
 
@@ -21,7 +21,7 @@ class PageAudit(HTMLParser):
         self.ids: list[str] = []
         self.references: list[str] = []
         self.local_links: list[str] = []
-        self.download_names: list[str] = []
+        self.anchor_links: list[str] = []
         self.inline_code: list[str] = []
         self.csp_policies: list[str] = []
 
@@ -41,8 +41,8 @@ class PageAudit(HTMLParser):
             destination = values.get("href") or values.get("src")
             if destination:
                 self.local_links.append(destination)
-                if tag == "a" and destination.startswith("../dist/"):
-                    self.download_names.append(Path(destination).name)
+                if tag == "a":
+                    self.anchor_links.append(destination)
         if tag == "script" and not values.get("src"):
             self.inline_code.append("inline script")
         if tag == "style":
@@ -92,7 +92,7 @@ def audit_page(path: Path) -> PageAudit:
         if destination.startswith(("https://", "http://", "mailto:", "data:")):
             continue
         if destination.startswith("../dist/"):
-            continue
+            fail(f"{filename}: {destination} only exists in a local preview; link to the GitHub release instead")
         local_path = urlsplit(destination).path
         if local_path and not (path.parent / local_path).resolve().is_file():
             fail(f"{filename}: missing local destination {destination}")
@@ -103,7 +103,7 @@ audits = {path.name: audit_page(path) for path in sorted(ROOT.glob("*.html"))}
 audits_by_path = {(ROOT / name).resolve(): audit for name, audit in audits.items()}
 for filename, audit in audits.items():
     for destination in audit.local_links:
-        if destination.startswith(("https://", "http://", "mailto:", "data:", "../dist/")):
+        if destination.startswith(("https://", "http://", "mailto:", "data:")):
             continue
         parsed = urlsplit(destination)
         local_path, fragment = parsed.path, parsed.fragment
@@ -120,18 +120,18 @@ sync_card_match = re.search(r'<article class="feature-card feature-card-sync"[^>
 if not sync_card_match:
     fail("index.html: Auto Sync feature card is missing")
 sync_card = sync_card_match.group(1)
-if "Optional live Auto Sync" not in sync_card or "Manual timing in download" not in sync_card:
+if "Optional live Auto Sync" not in sync_card or "Opt-in Live Auto Sync preview" not in sync_card:
     fail("index.html: platform-specific Auto Sync availability copy is missing")
 windows_badge = re.search(r'<div><span>WINDOWS</span><p>([^<]*)</p></div>', sync_card)
-if not windows_badge or "not included" not in windows_badge.group(1).lower():
-    fail("index.html: Windows Auto Sync badge must disclose that it is not included")
-if "Live Auto Sync is in development and not in the current download" not in site_js:
+if not windows_badge or "preview" not in windows_badge.group(1).lower():
+    fail("index.html: Windows Auto Sync badge must say it is an opt-in preview")
+if "Opt-in Live Auto Sync preview on build 20348+" not in site_js:
     fail("site.js: Windows Auto Sync availability copy is missing")
 if "Compatibility in preview" not in index or "Laptop check: passed" in index:
     fail("index.html: compatibility headline overstates physical-device verification")
 if "On Mac · private by default" not in sync_card or "Mac: Screen &amp; System Audio Recording" not in sync_card:
     fail("index.html: Mac-only Auto Sync privacy and permission copy is not labeled")
-if "Windows source prototype needs build 20348 or later" not in sync_card:
+if "opt-in Live Auto Sync needs build 20348 or later" not in sync_card:
     fail("index.html: Windows Auto Sync source build requirement is missing from the feature card")
 
 windows_download_match = re.search(
@@ -139,19 +139,19 @@ windows_download_match = re.search(
 windows10_download_match = re.search(
     r'<details class="download-legacy"[^>]*>(.*?)</details>', index, re.S)
 if not windows_download_match or \
-        "Auto Sync is not included in this Windows download." not in windows_download_match.group(1):
-    fail("index.html: Windows Store and ZIP path must disclose that Auto Sync is not included")
+        "Live Auto Sync is an opt-in preview on Windows build 20348 or later." not in windows_download_match.group(1):
+    fail("index.html: Windows Store and ZIP path must disclose the Live Auto Sync preview")
 if not windows10_download_match or \
-        "Auto Sync is not included in this Windows 10 download." not in windows10_download_match.group(1):
-    fail("index.html: Windows 10 Enterprise or LTSC path must disclose that Auto Sync is not included")
+        "so it is not available on Windows 10." not in windows10_download_match.group(1):
+    fail("index.html: Windows 10 Enterprise or LTSC path must disclose that Live Auto Sync is unavailable")
 
 privacy = (ROOT / "privacy.html").read_text(encoding="utf-8")
 windows_privacy_match = re.search(
-    r'<h2>Windows Auto Sync is in development</h2>\s*<p>(.*?)</p>', privacy, re.S)
+    r'<h2>Windows Live Auto Sync is an opt-in preview</h2>\s*<p>(.*?)</p>', privacy, re.S)
 if not windows_privacy_match:
     fail("privacy.html: Windows Auto Sync preview and audio-capture boundaries are missing")
 windows_privacy = windows_privacy_match.group(1)
-if "current Windows download does not include live Auto Sync" not in windows_privacy or \
+if "includes Live Auto Sync as an opt-in preview" not in windows_privacy or "never saved or sent anywhere" not in windows_privacy or \
         "excludes the microphone and system-wide audio mix" not in windows_privacy or \
         "Windows build 20348 or later" not in windows_privacy or "child processes" not in windows_privacy:
     fail("privacy.html: Windows Auto Sync preview and audio-capture boundaries are missing")
@@ -171,11 +171,19 @@ release_match = re.search(r'const releaseBase = "([^"]+)";', site_js)
 if not release_match:
     fail("site.js: public release base URL is missing")
 release_base = release_match.group(1)
-download_names = sorted(set(audits["index.html"].download_names))
+release_downloads = release_base.rsplit("/download/", 1)[0] + "/download/"
+download_names: set[str] = set()
+for filename, audit in audits.items():
+    for destination in audit.anchor_links:
+        if not destination.startswith(release_downloads):
+            continue
+        if not destination.startswith(release_base):
+            fail(f"{filename}: {destination} does not use the release in site.js ({release_base})")
+        download_names.add(unquote(destination[len(release_base):]))
 if not download_names:
     fail("index.html: no release downloads found to validate")
 
-for name in download_names:
+for name in sorted(download_names):
     url = release_base + quote(name)
     request = Request(url, method="HEAD", headers={"User-Agent": "Aurafy-Pages-validation"})
     try:

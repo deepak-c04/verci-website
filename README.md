@@ -10,7 +10,9 @@ From the project root, run:
 python3 -m http.server 8080
 ```
 
-Then open http://localhost:8080/ from this repository root. In the larger verci workspace, use http://localhost:8080/website/. On the published Pages URL, download buttons link to GitHub prerelease assets.
+Then open http://localhost:8080/ from this repository root. In the larger verci workspace, use http://localhost:8080/website/.
+
+Download buttons in `index.html` link straight to the GitHub prerelease assets, so they work without JavaScript. When the page is opened from a file or from a path containing `/website/`, `site.js` points them at the ZIPs built in `../dist/` instead. When you publish a new release, update the tag in the `index.html` download links and in `releaseBase` in `site.js`; the Pages validation fails if they disagree.
 
 ## Published layout
 
