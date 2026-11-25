@@ -15,7 +15,7 @@ const platformContent = {
     panelLabel: "tab-mac",
   },
   windows: {
-    label: "WINDOWS 11 · 24H2 OR LATER RECOMMENDED",
+    label: "WINDOWS 10 OR 11 · BEST ON 11 24H2",
     title: "Windows, in the flow.",
     description: "Choose x64 for most Intel or AMD laptops, or ARM64 for ARM devices. Aurafy reads the active Windows media session from supported players.",
     details: [
@@ -67,7 +67,7 @@ function selectPlatform(name, moveFocus = false) {
   note.replaceChildren(document.createTextNode(name === "mac" ? "a song" : "your music"), document.createElement("br"), noteAccent);
   noteAccent.textContent = name === "mac" ? "in focus" : "in view";
   art.querySelector(".platform-art-bottom span:first-child").textContent = name === "mac" ? "Aurafy / MAC" : "Aurafy / WINDOWS";
-  art.querySelector(".platform-art-bottom span:last-child").textContent = name === "mac" ? "14+" : "11 / 10 LTSC";
+  art.querySelector(".platform-art-bottom span:last-child").textContent = name === "mac" ? "14+" : "11 / 10";
 }
 
 tabs.forEach((tab, index) => {
