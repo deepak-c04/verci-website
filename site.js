@@ -4,7 +4,7 @@ const platformContent = {
     title: "Your Mac, your mood.",
     description: "A universal build for Apple silicon and Intel. Read Spotify or Apple Music playback, choose a visual style, and make the lyric view yours.",
     details: [
-      "10 visualizer styles and deep display controls",
+      "13 visualizer styles and deep display controls",
       "Original lyrics, transliteration, and imported translations",
       "Optional Auto Sync with supported on-device speech languages",
       "Optional video backgrounds with the supported player source",
@@ -15,7 +15,7 @@ const platformContent = {
     panelLabel: "tab-mac",
   },
   windows: {
-    label: "WINDOWS 11 24H2+ RECOMMENDED",
+    label: "WINDOWS 11 · 24H2 OR LATER RECOMMENDED",
     title: "Windows, in the flow.",
     description: "Choose x64 for most Intel or AMD laptops, or ARM64 for ARM devices. Aurafy reads the active Windows media session from supported players.",
     details: [
@@ -99,13 +99,16 @@ navigation.addEventListener("click", event => {
   navigation.classList.remove("is-open");
 });
 
+// index.html links straight to the GitHub release so downloads work without JavaScript.
+// Local previews inside the verci workspace point the same links at the ZIPs built in ../dist/.
+const releaseBase = "https://github.com/deepak-c04/verci-website/releases/download/aurafy-preview-2026-11-21-2.2.19-build-43/";
 const isLocalPreview = location.protocol === "file:" || location.pathname.split("/").includes("website");
-if (!isLocalPreview) {
-  const releaseBase = "https://github.com/deepak-c04/verci-website/releases/download/aurafy-preview-2026-11-21-2.2.19-build-43/";
-  document.querySelectorAll('a[href^="../dist/"]').forEach(link => {
-    const filename = link.getAttribute("href").split("/").pop();
-    link.href = releaseBase + encodeURIComponent(filename);
-    link.removeAttribute("download");
+if (isLocalPreview) {
+  document.querySelectorAll("a[href]").forEach(link => {
+    const href = link.getAttribute("href");
+    if (!href.startsWith(releaseBase)) return;
+    link.href = `../dist/${href.slice(releaseBase.length)}`;
+    link.setAttribute("download", "");
   });
 }
 

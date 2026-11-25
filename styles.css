@@ -805,3 +805,50 @@ body, .privacy-page { color: #f5f5f7; background: #000; }
 .platform-tab.is-selected:focus-visible { outline-color: #f5f5f7; }
 h1[tabindex="-1"]:focus-visible,
 h2[tabindex="-1"]:focus-visible { outline: 3px solid #6e5cf6; outline-offset: 6px; border-radius: 3px; }
+
+/* Readability: text outside decorative art stays at 11px or more, longer copy at 12px or more, and headlines keep visible word spaces. */
+.hero h1 { letter-spacing: -.055em; }
+.hero h1 span { letter-spacing: -.05em; }
+.section-heading h2, .platform-heading h2, .privacy-copy h2, .closing-cta h2,
+.how-heading h2, .faq-heading h2, .downloads-heading h2, .privacy-content h1 { letter-spacing: -.05em; }
+.platform-art-note { letter-spacing: -.06em; }
+.site-nav { font-size: 14px; }
+.header-cta { font-size: 13px; }
+.eyebrow, .platform-chip, .early-access-note, .privacy-content .updated, .closing-small { font-size: 12px; }
+.button, .text-link { font-size: 14px; }
+.hero-art-caption { font-size: 13px; }
+.scroll-cue, .step-number, .platform-kicker, .feature-meta, .feature-platforms, .footer-status,
+.visualizer-topline, .live-indicator, .visualizer-caption, .mood-label, .visualizer-footer,
+.platform-tab span, .platform-details li span { font-size: 11px; }
+.sync-illustration-top, .sync-local, .sync-steps, .visual-mini span, .platform-art-bottom,
+.privacy-stamp > span { font-size: 10px; }
+.mood-button, .ticker-track, .language-stack span, .mini-lyrics .mini-next, .platform-footnote { font-size: 12px; }
+.platform-tab, .video-note a, .site-footer > p, .footer-links, .platform-details li,
+.sync-feature-copy .sync-window-desc { font-size: 13px; }
+.feature-card p, .step p, .platform-panel-copy > p, .video-note p, .faq-list details p { font-size: 14px; }
+.section-heading > p:last-child, .how-heading > p:last-child, .faq-heading > p:last-child,
+.platform-heading > p, .downloads-heading > p, .privacy-copy > p:not(.eyebrow),
+.privacy-content p, .privacy-content li, .faq-list summary { font-size: 15px; }
+.privacy-content .intro { font-size: 16px; }
+.visualizer-footer > span:not(.visualizer-eq) { letter-spacing: .08em; text-align: center; }
+@media (min-width: 761px) and (max-width: 999px) {
+  .visualizer-moods { flex-wrap: wrap; gap: 6px; }
+  .mood-label { width: 100%; margin-bottom: 2px; }
+}
+@media (max-width: 760px) {
+  .header-cta { font-size: 12px; }
+  .site-nav a { font-size: 15px; }
+  .eyebrow, .mood-button, .ticker-track { font-size: 11px; }
+  .hero-intro, .privacy-content .intro { font-size: 15px; }
+  .hero-art-caption, .platform-footnote { font-size: 12px; }
+  .video-note p { font-size: 13px; }
+  .faq-list summary { font-size: 14px; }
+}
+@media (max-width: 370px) {
+  .header-cta { font-size: 11px; }
+  .hero h1 { font-size: clamp(54px, 17.5vw, 65px); }
+}
+@media (max-width: 340px) {
+  .header-cta { padding: 9px 10px; white-space: nowrap; }
+  .header-cta span { display: none; }
+}
