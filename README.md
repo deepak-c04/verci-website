@@ -1,6 +1,6 @@
 # Aurafy website preview
 
-This is a self-contained, dependency-free static site. The current public preview is version 2.2.19 build 43 (tag aurafy-preview-2026-11-21-2.2.19-build-43). The GitHub Pages workflow in .github/workflows/pages.yml validates the pages and release assets before deploying; app ZIPs stay attached to the GitHub release.
+This is a self-contained, dependency-free static site. The current public preview is version 2.2.20 build 44 (tag aurafy-preview-2026-11-25-2.2.20-build-44). The GitHub Pages workflow in .github/workflows/pages.yml validates the pages and release assets before deploying; app ZIPs stay attached to the GitHub release.
 
 ## Preview locally
 
