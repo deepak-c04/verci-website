@@ -101,7 +101,7 @@ navigation.addEventListener("click", event => {
 
 // index.html links straight to the GitHub release so downloads work without JavaScript.
 // Local previews inside the verci workspace point the same links at the ZIPs built in ../dist/.
-const releaseBase = "https://github.com/deepak-c04/verci-website/releases/download/aurafy-preview-2026-11-25-2.2.20-build-44/";
+const releaseBase = "https://github.com/deepak-c04/verci-website/releases/download/aurafy-preview-2026-11-26-2.2.21-build-45/";
 const isLocalPreview = location.protocol === "file:" || location.pathname.split("/").includes("website");
 if (isLocalPreview) {
   document.querySelectorAll("a[href]").forEach(link => {
