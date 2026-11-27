@@ -28,12 +28,13 @@ verci-website/       # public repository; contains only this website and its Pag
   aurafy.ico
   aurafy-apple-touch-icon.png
   og-image.png
+  assets/visualizer-examples/  # three responsive product screenshots
   robots.txt
   sitemap.xml
   .github/workflows/pages.yml
 Aurafy early preview # GitHub prerelease assets: five app ZIPs and SHA256SUMS.txt
 ```
 
-The large ZIPs stay in GitHub Releases so the Pages artifact remains small. The repository contains no desktop app source, user attachments, or unpacked build directories. The app packages are early previews: the Mac app is not notarized and the Windows packages are unsigned.
+The large ZIPs stay in GitHub Releases so the Pages artifact remains small. The repository contains no desktop app source or unpacked build directories; the visualizer examples are the only product screenshots shipped with the site. The app packages are early previews: the Mac app is not notarized and the Windows packages are unsigned.
 
 Before calling Aurafy a production release, replace the preview downloads with signed/notarized releases, verify installation on target Mac and Windows devices, and update the download links and support notes. The website itself makes no analytics, cookie, or third-party font requests. Browsers contact GitHub only when a visitor chooses a release download.
